@@ -7,3 +7,4 @@ examples/linked/node_modules
 examples/linked_consumer/node_modules
 examples/linked_tsconfig/node_modules
 examples/linked_tsconfig_consumer/node_modules
+examples/react/node_modules

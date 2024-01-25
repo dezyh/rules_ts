@@ -5,3 +5,4 @@ packages:
     - linked_tsconfig
     - linked_tsconfig_consumer
     - proto_grpc
+    - react

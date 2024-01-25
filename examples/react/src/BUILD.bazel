@@ -1,0 +1,46 @@
+load("@aspect_rules_js//js:defs.bzl", "js_library")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
+load("//examples/react:defs.bzl", "ASSET_PATTERNS", "SRC_PATTERNS", "TEST_PATTERNS", "TRANSPILER")
+
+js_library(
+    name = "assets",
+    srcs = glob(ASSET_PATTERNS),
+    visibility = ["//examples/react:__subpackages__"],
+)
+
+ts_project(
+    name = "src",
+    srcs = glob(
+        include = SRC_PATTERNS,
+        exclude = TEST_PATTERNS,
+    ),
+    data = [":assets"],
+    declaration = True,
+    resolve_json_module = True,
+    transpiler = TRANSPILER,
+    tsconfig = "//examples/react:tsconfig",
+    visibility = ["//examples/react:__subpackages__"],
+    deps = [
+        "//examples/react:node_modules/@types/react",
+        "//examples/react:node_modules/react",
+        "//examples/react:node_modules/react-dom",
+        "//examples/react:node_modules/vite-plugin-svgr",
+        "//examples/react:node_modules/web-vitals",
+    ],
+)
+
+ts_project(
+    name = "test_lib",
+    srcs = glob(TEST_PATTERNS),
+    declaration = True,
+    resolve_json_module = True,
+    transpiler = TRANSPILER,
+    tsconfig = "//examples/react:tsconfig",
+    deps = [
+        ":src",
+        "//:node_modules/vitest",
+        "//examples/react:node_modules/@testing-library/jest-dom",
+        "//examples/react:node_modules/@testing-library/react",
+        "//examples/react:node_modules/@types/jest",
+    ],
+)

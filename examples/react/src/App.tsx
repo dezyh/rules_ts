@@ -3,7 +3,7 @@ import './App.css';
 
 import count from '@/other';
 
-import { LogMessage } from '../../proto_grpc/logger_pb';
+import { LogMessage } from '~/examples/proto_grpc/logger_pb';
 
 function App() {
   console.log('count', count());

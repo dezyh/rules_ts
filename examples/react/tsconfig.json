@@ -22,6 +22,10 @@
           "./*",
           // Used in the IDE for type hints. The root is at `/`.
           "./src/*"
+      ],
+      "~/*": [
+        "../../*", // Used in builds. The root should be inside bazel-out/examples/react
+        "../../bazel-out/k8-fastbuild/bin/*" // Use for IDE type resolution.
       ]
 	}
   },

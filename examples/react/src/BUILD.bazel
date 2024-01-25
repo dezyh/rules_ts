@@ -24,8 +24,14 @@ ts_project(
         "//examples/react:node_modules/@types/react",
         "//examples/react:node_modules/react",
         "//examples/react:node_modules/react-dom",
-        "//examples/react:node_modules/vite-plugin-svgr",
         "//examples/react:node_modules/web-vitals",
+
+        "//examples/proto_grpc:logger_ts_proto",
+
+        # Why do we need to include these 2?
+        # Is there a better way to accomplish this?
+        "//examples/proto_grpc:node_modules/@bufbuild/protobuf",
+        "//examples/connect_node:node_modules/@bufbuild/protobuf",
     ],
 )
 

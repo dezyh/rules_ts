@@ -1,11 +1,13 @@
-/// <reference types="vite-plugin-svgr/client" />
 import logo from './logo.svg?react';
 import './App.css';
 
 import count from '@/other';
 
+import { LogMessage } from '../../proto_grpc/logger_pb';
+
 function App() {
   console.log('count', count());
+  console.log('log', new LogMessage({}));
   return (
     <div className="App">
       <header className="App-header">

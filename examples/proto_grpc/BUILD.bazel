@@ -23,6 +23,7 @@ ts_proto_library(
     proto = ":logger_proto",
     visibility = ["//visibility:public"],
     deps = ["//examples/connect_node/proto"],
+    copy_files = False,
 )
 
 ts_project(
